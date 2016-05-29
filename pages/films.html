@@ -3,26 +3,31 @@
     <head>
         <meta charset="utf-8">
         <title>Films</title>
+        <script src="../scripts/libs/handlebars-v4.0.5.js"></script>
     </head>
     
     <body>
         <a href="../index.html">Home</a>
         <h1>Films</h1>
-        <div id="filmsContainer">
-            <span id="episode1">
-                <input type="button" value="Episode 1" onclick="getDetailedInfo('films','4')">
-            </span>
-            <span id="episode2">
-                <input type="button" value="Episode 2" onclick="getDetailedInfo('films', '5')">
-            </span>
-            <span id="episode3">
-                <input type="button" value="Episode 3" onclick="getDetailedInfo('films', '6')">
-            </span>
-        </div>
+        <div id="buttonsContainer"></div>
         <div id="detailedInfo"></div>
 
 
         <script src="../scripts/main.js"></script>
+        <script type="text/javascript">
+              addFilmsButtons("films", function(entities) {
+                for(i=0;i<entities.length;i++){
+                    var buttonName = entities[i].title;
+                    var buttonTemplate = "<input type='button' value={{name}}>";
+                    var template = Handlebars.compile(buttonTemplate);
+                    var button = template({name:buttonName});
+                    document.getElementById("buttonsContainer").innerHTML += button;
+                }
+                document.getElementById("detailedInfo").innerHTML = "";
+            }, function() {
+                alert("API is down");
+            });            
+        </script>
 
     </body>
 </html>

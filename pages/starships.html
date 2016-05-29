@@ -3,26 +3,19 @@
     <head>
         <meta charset="utf-8">
         <title>Starships</title>
+        <script src="../scripts/libs/handlebars-v4.0.5.js"></script>
     </head>
     
     <body>
         <a href="../index.html">Home</a>
         <h1>Starships</h1>
-        <div id="starshipsContainer">
-            <span id="deathStar">
-                <input type="button" value="Death Star" onclick="getDetailedInfo('starships','9')">
-            </span>
-            <span id="millenniumFalcon">
-                <input type="button" value="Millennium Falcon" onclick="getDetailedInfo('starships', '10')">
-            </span>
-            <span id="yWing">
-                <input type="button" value="Y-wing" onclick="getDetailedInfo('starships', '11')">
-            </span>
-        </div>
+        <div id="buttonsContainer"></div>
         <div id="detailedInfo"></div>
 
-
         <script src="../scripts/main.js"></script>
+        <script type="text/javascript">
+              addButtons("starships");            
+        </script>
 
     </body>
 </html>
