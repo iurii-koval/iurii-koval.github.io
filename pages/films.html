@@ -18,7 +18,8 @@
               addFilmsButtons("films", function(entities) {
                 for(i=0;i<entities.length;i++){
                     var buttonName = entities[i].title;
-                    var buttonTemplate = "<input type='button' value={{name}}>";
+                    console.log(buttonName);
+                    var buttonTemplate = "<input type='button' value='{{name}}'>";
                     var template = Handlebars.compile(buttonTemplate);
                     var button = template({name:buttonName});
                     document.getElementById("buttonsContainer").innerHTML += button;

@@ -34,7 +34,7 @@ function loadContent(entities) {
                 for(i=0;i<entities.length;i++){
                     var buttonName = entities[i].name;
                     console.log(buttonName);
-                    var buttonTemplate = "<input type='button' value={{name}}>";
+                    var buttonTemplate = "<input type='button' value='{{name}}'>";
                     var template = Handlebars.compile(buttonTemplate);
                     var button = template({name:buttonName});
                     document.getElementById("buttonsContainer").innerHTML += button;
