@@ -1,34 +1,39 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Films</title>
-        <script src="../scripts/libs/handlebars-v4.0.5.js"></script>
-    </head>
-    
-    <body>
-        <a href="../index.html">Home</a>
-        <h1>Films</h1>
-        <div id="buttonsContainer"></div>
-        <div id="detailedInfo"></div>
+
+<head>
+    <meta charset="utf-8">
+    <title>Films</title>
+    <script src="../scripts/libs/handlebars-v4.0.5.js"></script>
+</head>
+
+<body>
+    <a href="../index.html">Home</a>
+    <h1>Films</h1>
+    <div id="buttonsContainer"></div>
+    <div id="detailedInfo"></div>
 
 
-        <script src="../scripts/main.js"></script>
-        <script type="text/javascript">
-              addFilmsButtons("films", function(entities) {
-                for(i=0;i<entities.length;i++){
-                    var buttonName = entities[i].title;
-                    console.log(buttonName);
-                    var buttonTemplate = "<input type='button' value='{{name}}'>";
-                    var template = Handlebars.compile(buttonTemplate);
-                    var button = template({name:buttonName});
-                    document.getElementById("buttonsContainer").innerHTML += button;
-                }
-                document.getElementById("detailedInfo").innerHTML = "";
-            }, function() {
-                alert("API is down");
-            });            
-        </script>
+    <script src="../scripts/main.js"></script>
+    <script type="text/javascript">
+        addFilmsButtons("films", function(entities) {
+            for (i = 0; i < entities.length; i++) {
+                var buttonName = entities[i].title;
+                console.log(buttonName);
+                var buttonTemplate = "<input type='button' value='{{name}}'>";
+                var template = Handlebars.compile(buttonTemplate);
+                var button = template({
+                    name: buttonName
+                });
+                document.getElementById("buttonsContainer").innerHTML += button;
+            }
+            document.getElementById("detailedInfo").innerHTML = "";
+        }, function() {
+            alert("API is down");
+        });
 
-    </body>
+    </script>
+
+</body>
+
 </html>
