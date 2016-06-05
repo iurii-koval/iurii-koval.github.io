@@ -10,24 +10,13 @@
         <a href="../index.html">Home</a>
         <h1>Vehicles</h1>
         <div id="buttonsContainer"></div>
+        <br>
+        <div id="loadMore"></div>
         <div id="detailedInfo"></div>
 
         <script src="../scripts/main.js"></script>
         <script type="text/javascript">
-            /*  addButtons("vehicles", function(entities) {
-                for(i=0;i<entities.length;i++){
-                    var buttonName = entities[i].name;
-                    var buttonTemplate = "<input type='button' value={{name}}>";
-                    var template = Handlebars.compile(buttonTemplate);
-                    var button = template({name:buttonName});
-                    document.getElementById("buttonsContainer").innerHTML += button;
-                }
-                document.getElementById("detailedInfo").innerHTML = "";
-            }, function() {
-                alert("API is down");
-            });*/
-            addButtons("vehicles");
-            
+            addButtons("http://swapi.co/api/vehicles");            
         </script>
 
     </body>
