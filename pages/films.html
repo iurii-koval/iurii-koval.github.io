@@ -11,27 +11,15 @@
     <a href="../index.html">Home</a>
     <h1>Films</h1>
     <div id="buttonsContainer"></div>
+     <br>
+    <div id="loadMore"></div>
+    <br>
     <div id="detailedInfo"></div>
 
 
     <script src="../scripts/main.js"></script>
     <script type="text/javascript">
-        addFilmsButtons("films", function(entities) {
-            for (i = 0; i < entities.length; i++) {
-                var buttonName = entities[i].title;
-                console.log(buttonName);
-                var buttonTemplate = "<input type='button' value='{{name}}'>";
-                var template = Handlebars.compile(buttonTemplate);
-                var button = template({
-                    name: buttonName
-                });
-                document.getElementById("buttonsContainer").innerHTML += button;
-            }
-            document.getElementById("detailedInfo").innerHTML = "";
-        }, function() {
-            alert("API is down");
-        });
-
+        addButtons("http://swapi.co/api/films", "title");
     </script>
 
 </body>
