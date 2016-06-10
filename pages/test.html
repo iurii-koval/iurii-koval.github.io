@@ -3,31 +3,28 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Films</title>
+    <title>Test</title>
     <script src="../scripts/libs/handlebars-v4.0.5.js"></script>
 </head>
 
 <body>
     <a href="../index.html">Home</a>
-    <h1>Films</h1>
+    <h1>Test</h1>
     <div id="buttonsContainer"></div>
-     <br>
+    <br>
     <div id="loadMore"></div>
     <br>
     <div id="detailedInfo"></div>
+    <br>
+    <div id="tableData"></div>
 
-
-    <script src="../scripts/main.js"></script>
-    <script type="text/javascript">
-        addButtons("http://swapi.co/api/films", "title");
-    </script>
     <script id="table-template" type="text/x-handlebars-template">
         <table border="1">
             <thead>
-                <th>{{tableName}}</th>                
+                <th>{{tableName}}</th>
             </thead>
             <tbody>
-                {{#each entity}}
+                {{#each obj}}
                 <tr>
                     <td>{{@key}}</td>
                     <td>{{this}}</td>
@@ -35,6 +32,18 @@
                 {{/each}}
             </tbody>
         </table>
+    </script>
+    <script type="text/javascript">
+        var source = document.getElementById("table-template").innerHTML;
+        var template = Handlebars.compile(source);
+        var data = {
+            tableName: "Table Name",
+            obj: {
+                name: "bob",
+                age: "22"
+            }
+        };
+        document.getElementById("detailedInfo").innerHTML += template(data);
     </script>
 
 </body>

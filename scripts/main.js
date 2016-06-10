@@ -6,7 +6,7 @@ function addButtons(url, property) {
             loadContent(entities, property);
             if (null != request.response.next) {
                 var nextUrl = request.response.next;
-                var loadMoreButton = "<input type='button' value='Load more' onclick='addButtons(\"" + nextUrl +"\",\"" + property+"\")'>"
+                var loadMoreButton = "<input type='button' value='Load more' onclick='addButtons(\"" + nextUrl + "\",\"" + property + "\")'>"
                 eraseContent("loadMore");
                 document.getElementById("loadMore").innerHTML += loadMoreButton;
             } else {
@@ -30,7 +30,6 @@ function loadContent(entities, property) {
         var entity = entities[i];
         var buttonName = entity[property];
         var info = JSON.stringify(entity);
-        //var buttonTemplate = "<input type='button' value='{{name}}' onclick='showDetailedInfo(\"" + info + "\")'>";
         var buttonTemplate = "<input type='button' value='{{name}}' onclick='createTableWithData(" + info + ")'>";
         var template = Handlebars.compile(buttonTemplate);
         var button = template({
@@ -42,29 +41,19 @@ function loadContent(entities, property) {
 }
 
 function createTableWithData(entity) {
-    var table = document.createElement("table");
-    //table.style.display = "block";
-    table.style.width = '30%';
-    
-    table.setAttribute("border", "1");
-    var thead = document.createElement("th");
-    thead.appendChild(document.createTextNode(entity[Object.keys(entity)[0]]));
-    
-    var tbody = document.createElement("tbody");
-    for(var property in entity) {
-        if(entity.hasOwnProperty(property)) {            
-        var tr = document.createElement("tr");
-        var key = document.createElement("td");
-        key.appendChild(document.createTextNode(property));
-        var value = document.createElement("td");
-        value.appendChild(document.createTextNode(entity[property]));
-        tr.appendChild(key);
-        tr.appendChild(value);            
-        tbody.appendChild(tr);
-        }
+    var source = document.getElementById("table-template").innerHTML;
+    var template = Handlebars.compile(source);
+    var data = {
+        tableName: entity[Object.keys(entity)[0]],
+        entity: entity
+    };
+    document.getElementById("detailedInfo").innerHTML = template(data);
+}
+
+function createLinks(urls) {
+    var links = String(urls).split(",");
+    console.log("# of links: " + links.length);
+    for (var i = 0; i < links.length; i++) {
+        console.log(i + ":" + links[i]);
     }
-    table.appendChild(thead);
-    table.appendChild(tbody);
-    document.getElementById("detailedInfo").innerHTML = "";
-    document.getElementById("detailedInfo").appendChild(table);
 }

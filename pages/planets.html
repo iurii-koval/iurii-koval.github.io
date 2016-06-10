@@ -19,7 +19,22 @@
     <script src="../scripts/main.js"></script>
     <script type="text/javascript">
         addButtons("http://swapi.co/api/planets", "name");
+    </script>
 
+    <script id="table-template" type="text/x-handlebars-template">
+        <table border="1">
+            <thead>
+                <th>{{tableName}}</th>                
+            </thead>
+            <tbody>
+                {{#each entity}}
+                <tr>
+                    <td>{{@key}}</td>
+                    <td>{{this}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
     </script>
 
 </body>
